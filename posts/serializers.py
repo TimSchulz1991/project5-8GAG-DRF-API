@@ -7,6 +7,8 @@ class PostSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    # Add this field, to show the uppercase topic value
+    topic = serializers.CharField(source='get_topic_display')
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
