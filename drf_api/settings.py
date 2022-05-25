@@ -51,12 +51,47 @@ INSTALLED_APPS = [
     'cloudinary',
     'rest_framework',
     'django_filters',
+    # https://dj-rest-auth.readthedocs.io/en/latest/installation.html
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
 
     'profiles',
     'posts',
     'comments',
     'likes',
 ]
+
+SITE_ID = 1
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [(
+        'rest_framework.authentication.SessionAuthentication'
+        if 'DEV' in os.environ
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    )],
+    # Pagination
+    # 'DEFAULT_PAGINATION_CLASS':
+    #     'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 10,
+    # https://docs.python.org/3/library/time.html#time.strftime
+    # https://www.django-rest-framework.org/api-guide/settings/#date-and-time-formatting
+    # 'DATETIME_FORMAT': '%d %b %Y'
+}
+
+REST_USE_JWT = True
+
+JWT_AUTH_COOKIE = 'my-app-auth'
+
+JWT_AUTH_SECURE = True
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
