@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     """
-    Post model, related to 'owner', i.e. a User instance.
+    Post model, related to 'owner'
     """
     topic_choices = [
         ('funny', 'Funny'),
