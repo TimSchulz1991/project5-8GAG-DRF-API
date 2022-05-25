@@ -11,6 +11,8 @@ class PostSerializer(serializers.ModelSerializer):
     # Add this field, to show the uppercase topic value
     topic = serializers.CharField(source='get_topic_display')
     like_id = serializers.SerializerMethodField()
+    likes_count = serializers.ReadOnlyField()
+    comments_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -44,5 +46,6 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'title',
-            'image', 'is_owner', 'profile_id', 'profile_image', 'topic', 'like_id'
+            'image', 'is_owner', 'profile_id', 'profile_image', 'topic',
+            'like_id', 'likes_count', 'comments_count'
         ]
