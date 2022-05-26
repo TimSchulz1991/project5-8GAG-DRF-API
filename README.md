@@ -101,7 +101,7 @@ Throughout the development process, the stories were constantly updated accordin
 
 ## Pep8
 
-- [PEP8](http://pep8online.com/) shows no errors, except for some default lines being too long in the settings.py file.
+- [PEP8](http://pep8online.com/) shows no errors, except for some default code being too long (over the 80 char limit) in the settings.py file.
 
 ## Manual testing of user stories
 
@@ -109,3 +109,111 @@ Relating back to the user story of this README:
 - As an admin, I want to be able to manage all the users, posts, comments and likes, so that I can for example delete malicious content from the page
     - All works as intended. The testing is described in more detail in the table below.
 
+| Test       | Action            | Expected Result               | Pass |
+| ---------- | ---------------- | --------------------------- | ---- |
+| Users     | Create, edit, delete   | A user can be created, edited or deleted.   | ✓    |
+| Users     | Update permissions  | The user permissions can be updated.      | ✓    |
+| Profiles   | Create, edit, delete | A profile can be created, edited or deleted.  | ✓    |
+| Posts  | Create, edit, delete       | A post can be created, edited or deleted.        | ✓    |
+| Comments   | Create, edit, delete | A comment can be created, edited or deleted.   | ✓    |
+| Likes   | Create, edit, delete | A like can be created, edited or deleted.   | ✓    |
+
+# Deployment
+
+## Development
+
+1.  Clone [this repository](https://github.com/TimSchulz1991/project5-8GAG-DRF-API).
+2.  In your IDE, connect to your repo, then enter this command in the terminal:
+        
+        pip install -r requirements.txt
+
+- Make sure your INSTALLED_APPS in settings.py look like this:
+
+        INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'cloudinary_storage',
+        'django.contrib.staticfiles',
+        'cloudinary',
+        'rest_framework',
+        'django_filters',
+        'rest_framework.authtoken',
+        'dj_rest_auth',
+        'django.contrib.sites',
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+        'dj_rest_auth.registration',
+        'corsheaders',
+        'profiles',
+        'posts',
+        'comments',
+        'likes',
+        ]
+
+3. In you terminal, enter these commands in the terminal:
+
+        python manage.py makemigrations
+        python manage.py migrate
+
+4.  Git add, commit and push all changes to your repo.
+5.  Create or log in to an account on Heroku.
+6.  Create a new app on Heroku.
+7.  Open your app on Heroku, go to Resources, Add-ons and search for PostgreSQL, then add it.
+8.  In the Deploy tab on Heroku, go to Deployment method and add your GitHub repository.
+9.  In the Deploy tab on Heroku, go to Manual deploy and select deploy branch for early deployment.
+10. Create or log in to an account on Cloudinary.
+11. Copy your API Environment Variable.
+12. Go back to Heroku, Settings and click on Reveal Config Vars.
+13. Add these variables to your config vars. PostgreSQL DATABASE_URL should already be there.
+    - ALLOWED_HOST | your_deployed_api_url
+    - CLIENT_ORIGIN | your_deployed_frontend_url
+    - CLIENT_ORIGIN_DEV | your_local_server_url
+    - CLOUDINARY_URL | your_api_variable
+    - SECRET_KEY | your_choice ([Secret Key Generator](https://miniwebtool.com/django-secret-key-generator/))
+    - DISABLE_COLLECTSTATIC | 1
+14. Create an env.py in the root directory, add it to .gitignore and add these lines at the top
+
+        import os
+
+        os.environ["SECRET_KEY"] = "your secret_key here"
+        os.environ["CLOUDINARY_URL"] = "cloudinary url here"
+        os.environ['DEV'] = '1'
+
+15. In settings.py, update the CORS_ALLOWED_ORIGIN_REGEXES variable to match your local server url.
+
+        if 'CLIENT_ORIGIN_DEV' in os.environ:
+            extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+            CORS_ALLOWED_ORIGIN_REGEXES = [
+                rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+            ]
+
+16. Create a superuser for your site:
+
+        python manage.py createsuperuser
+
+17. To run your app locally, enter this command in your terminal:
+        python manage.py runserver
+    
+The project is now set up to automatically switch between DEBUG: True and False for development server and deployed site.
+
+## **Production**
+
+
+1.  If changes has been made, make sure to run migrations:
+
+        python manage.py makemigrations
+        python manage.py migrate
+
+2.  Git add, commit and push all changes to your repo.
+3.  On Heroku, go to Deploy and and choose manual deploy.
+4.  If you want to create a superuser for the deployed page with PostgreSQL as a database, then just replace 
+
+        os.environ['DEV'] = '1'
+    with 
+        os.environ['DATABASE_URL'] = 'your_postgres_database_url'
+
+5. Now you can create a superuser for the deployed project as described in step 16 above
