@@ -37,7 +37,7 @@ Below you can see the ER diagram for this project, to get an instant overview of
 
 For the backend part of this entire 8GAG project, there is only one user story: 
 
-- As an admin, I want to be able to manage all the users, posts, comments and likes, so that I can for example delete malicious content from the page
+- As an admin, I want to be able to manage (create, edit, delete) all the users, posts, comments and likes, so that I can for example delete malicious content from the page
 
 # Agile
 
@@ -106,7 +106,7 @@ Throughout the development process, the stories were constantly updated accordin
 ## Manual testing of user stories
 
 Relating back to the user story of this README: 
-- As an admin, I want to be able to manage all the users, posts, comments and likes, so that I can for example delete malicious content from the page
+- As an admin, I want to be able to manage (create, edit, delete) all the users, posts, comments and likes, so that I can for example delete malicious content from the page
     - All works as intended. The testing is described in more detail in the table below.
 
 | Test       | Action            | Expected Result               | Pass |
