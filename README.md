@@ -2,7 +2,7 @@
 
 If you want to laugh and enjoy some good memes, you have come to the right place - to 8GAG!
 
-This repository contains information about the Django REST Framework API, built specifically for the 8GAG frontend React application ([Repo here](#) and [deployed website here](#)).
+This repository contains information about the Django REST Framework API, built specifically for the 8GAG frontend React application ([Repo here](https://github.com/TimSchulz1991/project5-8GAG-React/) and [deployed website here](#)).
 
 All the information about the project, its goals, the end user stories, and much more can be found in the [README]() of the frontend 8GAG application.
 
@@ -216,4 +216,25 @@ The project is now set up to automatically switch between DEBUG: True and False 
     with 
         os.environ['DATABASE_URL'] = 'your_postgres_database_url'
 
-5. Now you can create a superuser for the deployed project as described in step 16 above
+5. Now you can create a superuser for the deployed project as described in step 16 above via the terminal of your IDE
+
+# Credits
+
+## Code
+
+This API was built using Django REST Framework. This project is inspired by Code Institute's Django REST API walkthrough project [GitHub](https://github.com/Code-Institute-Solutions/drf-api), as it provided most of the features that I needed for my meme-sharing platform 8GAG. 
+
+## Content 
+
+The content and the layout of this README file was inspired by the work of a fellow CI student Johan Fredriksson for his [project 5](https://github.com/JFrdrkssn/llama-be/blob/main/README.md). Furthermore, I followed the structure of previous README files that I have written for past projects. 
+
+## Media
+
+Default profile image and default post image from [Code Institute](https://codeinstitute.net/) course material.
+
+## Acknowledgements
+
+- First of all I want to thank my fellow CI student Johan Fredriksson for all his support, as he has been going through this whole React/DRF-API project just a few weeks before me; thank you for telling me about all the little traps to avoid for my project, based on the experiences you had. A big thank you also for letting me be inspired by your README files. 
+- Thank you to my mentor Antonio Rodriguez, at [Code Institute](https://codeinstitute.net/), for continuous helpful feedback and support.
+- Big thanks to my colleague Ali for his ongoing help with all kinds of smaller issues and feedback throughout the project.
+- Last but not least, a big thanks to the super friendly and helpful tutor support at [Code Institute](https://codeinstitute.net/).
