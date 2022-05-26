@@ -25,7 +25,6 @@ class Post(models.Model):
     # content = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/'
-        # , default='../default_post_qdg53d', blank=True
     )
     topic = models.CharField(max_length=32, choices=topic_choices)
 
