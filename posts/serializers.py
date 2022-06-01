@@ -10,7 +10,7 @@ class PostSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     # Add this field, to show the uppercase topic value
-    topic = serializers.CharField(source='get_topic_display')
+    # topic = serializers.CharField(source='get_topic_display')
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
