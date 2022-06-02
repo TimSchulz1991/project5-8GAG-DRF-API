@@ -19,9 +19,11 @@ class TopicSerializerField(serializers.Field):
     }
 
     def to_representation(self, obj):
+        print(obj)
         return self.VALUE_MAP[obj]
 
     def to_internal_value(self, data):
+        print(data)
         return data
 
 
@@ -43,6 +45,7 @@ class PostSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 "You must select a topic"
             )
+        return data
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
