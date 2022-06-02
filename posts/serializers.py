@@ -21,6 +21,9 @@ class TopicSerializerField(serializers.Field):
     def to_representation(self, obj):
         return self.VALUE_MAP[obj]
 
+    def to_internal_value(self, data):
+        return data
+
 
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
