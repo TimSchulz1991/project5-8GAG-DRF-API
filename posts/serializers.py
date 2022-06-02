@@ -38,6 +38,12 @@ class PostSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
 
+    def validate_topic(self, data):
+        if (len(data) == 0):
+            raise serializers.ValidationError(
+                "You must select a topic"
+            )
+
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
             raise serializers.ValidationError(
