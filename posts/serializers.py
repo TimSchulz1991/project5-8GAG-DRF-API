@@ -79,3 +79,4 @@ class PostSerializer(serializers.ModelSerializer):
             'image', 'is_owner', 'profile_id', 'profile_image', 'topic',
             'like_id', 'likes_count', 'comments_count'
         ]
+        extra_kwargs = {'topic': {'required': True}}
