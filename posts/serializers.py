@@ -4,13 +4,34 @@ from likes.models import Like
 from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
+class TopicSerializerField(serializers.Field):
+
+    VALUE_MAP = {
+        'funny': 'Funny',
+        'wholesome': 'Wholesome',
+        'wtf': 'WTF',
+        'cryptocurrency': 'Cryptocurrency',
+        'animals': 'Animals',
+        'awesome': 'Awesome',
+        'gaming': 'Gaming',
+        'meme': 'Meme',
+        'relationship': 'Relationship'
+    }
+
+    def to_representation(self, obj):
+        return self.VALUE_MAP[obj]
+
+    def to_internal_value(self, data):
+        return {k: v for v, k in self.VALUE_MAP.items()}[data]
+
+
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     # Add this field, to show the uppercase topic value
-    # topic = serializers.CharField(source='get_topic_display')
+    topic = TopicSerializerField()
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
