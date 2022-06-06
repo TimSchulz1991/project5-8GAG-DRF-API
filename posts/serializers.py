@@ -85,7 +85,8 @@ class PostSerializer(serializers.ModelSerializer):
         super(PostSerializer, self).__init__(*args, **kwargs)
 
         if self.context['request'].method == 'PUT':
-            self.fields.pop('image')
+                if 'image' not in self.context['request'].data:
+                    self.fields.pop('image')
 
     class Meta:
         model = Post
