@@ -20,7 +20,12 @@ class TopicSerializerField(serializers.Field):
 
     def to_representation(self, obj):
         print(obj)
-        return self.VALUE_MAP[obj]
+        try:
+            return self.VALUE_MAP[obj]
+        except KeyError:
+            raise serializers.ValidationError(
+                "The topic must have a valid value"
+            )
 
     def to_internal_value(self, data):
         print(data)
