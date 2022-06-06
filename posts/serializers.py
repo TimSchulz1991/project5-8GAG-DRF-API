@@ -81,6 +81,12 @@ class PostSerializer(serializers.ModelSerializer):
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
 
+    def __init__(self, *args, **kwargs):
+        super(PostSerializer, self).__init__(*args, **kwargs)
+
+        if self.context['request'].method == 'PUT':
+            self.fields.pop('image')
+
     class Meta:
         model = Post
         fields = [
@@ -88,4 +94,5 @@ class PostSerializer(serializers.ModelSerializer):
             'image', 'is_owner', 'profile_id', 'profile_image', 'topic',
             'like_id', 'likes_count', 'comments_count'
         ]
+        optional_fields = ['image', ]
         extra_kwargs = {'topic': {'required': True}}
