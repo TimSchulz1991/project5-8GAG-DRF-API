@@ -27,7 +27,8 @@ class PostList(generics.ListCreateAPIView):
         # user liked posts
         'likes__owner__profile',
         # user posts
-        'owner__profile'
+        'owner__profile',
+        'topic',
     ]
 
     search_fields = [
