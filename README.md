@@ -1,10 +1,10 @@
-# 8GAG - [Live link](https://drf-api-8gag.herokuapp.com/)
+# 8GAG - Backend in DRF - [Live link](https://drf-api-8gag.herokuapp.com/)
 
 If you want to laugh and enjoy some good memes, you have come to the right place - to 8GAG!
 
-This repository contains information about the Django REST Framework API, built specifically for the 8GAG frontend React application ([Repo here](https://github.com/TimSchulz1991/project5-8GAG-React/) and [deployed website here](#)).
+This repository contains information about the Django REST Framework API, built specifically for the 8GAG frontend React application ([Repo here](https://github.com/TimSchulz1991/project5-8GAG-React/) and [deployed website here](https://react-8gag.herokuapp.com/)).
 
-All the information about the project, its goals, the end user stories, and much more can be found in the [README]() of the frontend 8GAG application.
+All the information about the project, its goals, the end user stories, and much more can be found in the [README](https://github.com/TimSchulz1991/project5-8gag-react/blob/main/README.md) of the frontend 8GAG application.
 
 # Data Model
 
