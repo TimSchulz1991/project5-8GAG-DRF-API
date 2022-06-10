@@ -224,6 +224,8 @@ The project is now set up to automatically switch between DEBUG: True and False 
 
 This API was built using Django REST Framework. This project is inspired by Code Institute's Django REST API walkthrough project [GitHub](https://github.com/Code-Institute-Solutions/drf-api), as it provided most of the features that I needed for my meme-sharing platform 8GAG. 
 
+Furthermore, my colleague Ali supported me in building the TopicSerializerField class for the post model, including the validation functionality in the PostSerializer class - so that the user can properly add a topic to each post.
+
 ## Content 
 
 The content and the layout of this README file was inspired by the work of a fellow CI student Johan Fredriksson for his [project 5](https://github.com/JFrdrkssn/llama-be/blob/main/README.md). Furthermore, I followed the structure of previous README files that I have written for past projects. 
