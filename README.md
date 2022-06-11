@@ -118,6 +118,10 @@ Relating back to the user story of this README:
 | Comments   | Create, edit, delete | A comment can be created, edited or deleted.   | ✓    |
 | Likes   | Create, edit, delete | A like can be created, edited or deleted.   | ✓    |
 
+## Bugs
+
+The Admin panel of the deployed project on Heroku has no CSS styling, which seems to be a DRF bug. 
+
 # Deployment
 
 ## Development
